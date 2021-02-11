@@ -11,6 +11,15 @@ const updateUI = function () {
     else {
         boardHolder.classList.remove('is-invisible')
         gameName.innerHTML = game.getName()
+        let curr = game.currentPlayer
+        if(curr === 1){
+            clickTargets.classList.remove('red')
+            clickTargets.classList.add('black')
+        }
+        if(curr === 2){
+            clickTargets.classList.remove('black')
+            clickTargets.classList.add('red')
+        }
     }
 }
 
