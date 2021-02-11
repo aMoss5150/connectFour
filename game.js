@@ -21,11 +21,6 @@ class Game {
 
 export { Game }
 
-
-
-
-
-
             // Column organized into nested array
             // let ColofSquares = []
             // for (let i=0;i<colSelectors.length;i++) {
