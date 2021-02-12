@@ -1,5 +1,6 @@
 import { Game } from './game.js'
 
+
 const boardHolder = document.querySelector('#board-holder')
 let game = undefined
 const gameName = document.querySelector('#game-name')
@@ -12,11 +13,11 @@ const updateUI = function () {
         boardHolder.classList.remove('is-invisible')
         gameName.innerHTML = game.getName()
         let curr = game.currentPlayer
-        if(curr === 1){
+        if (curr === 1) {
             clickTargets.classList.remove('red')
             clickTargets.classList.add('black')
         }
-        if(curr === 2){
+        if (curr === 2) {
             clickTargets.classList.remove('black')
             clickTargets.classList.add('red')
         }

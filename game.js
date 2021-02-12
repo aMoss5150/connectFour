@@ -1,20 +1,36 @@
+import { Column } from './column.js'
+
 class Game {
     constructor(player1name, player2name) {
         this.player1name = player1name
         this.player2name = player2name
         this.currentPlayer = 1
+
+        this.columns = [];
+
+        for (let i = 0; i < 7; i++) {
+            this.columns.push(new Column())
+        }
     }
 
     getName() {
         return `${this.player1name} versus ${this.player2name}`
     }
 
-    playInColumn() {
+    playInColumn(columnIndex) {
+        let currentColumn = this.columns[columnIndex] //!! ??????
+        this.columns.add(this.currentPlayer)
+
         if (this.currentPlayer === 1) {
             this.currentPlayer = 2
         } else {
             this.currentPlayer = 1;
         }
+    }
+
+    getTokenAt(rowIndex, columnIndex) {
+        let currentColumn = this.columns[columnIndex]
+        return currentColumn.getTokenAt(rowIndex)
     }
 }
 

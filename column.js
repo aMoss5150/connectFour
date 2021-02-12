@@ -1,22 +1,32 @@
 class Column {
-    constructor(){
+    constructor() {
+        this.tokens = [null, null, null, null, null, null];
     }
 
-    add(currentPlayer){
+    add(currentPlayer) {
+        for (let i = this.tokens.length - 1; i >= 0; i--) {
+            if (this.tokens[i] === null) {
+                this.tokens[i] = currentPlayer
+                return;
+            }
+        }
     }
 
-    getTokenAt(rowIn){
-        if(rowIn === null) {
-            return null
-        }
-        else if(rowIn === 1) {
-            return 1
-        }
-        else if(rowIn === 2) {
-            return 2
-        }
+    getTokenAt(rowIn) {
+        return tokens[rowIn]
     }
+
+
+
 }
 
 
-export {Column}
+export { Column }
+
+// if (rowIn >= 0 && rowIn <= 5) {
+//     if (this.tokens[rowIn] === 1) return 1
+//     if (this.tokens[rowIn] === 2) return 2
+//     else {
+//         return null
+//     }
+// }
