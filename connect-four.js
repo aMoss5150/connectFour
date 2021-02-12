@@ -43,6 +43,17 @@ const updateUI = function () {
                 }
             }
         }
+
+        for (let i=0 ; i<=6; i++) {
+            let id = `column-${i}`
+            let el = document.getElementById(id)
+            if (game.isColumnFull(i)) {
+                el.classList.add('full')
+            }
+            if (!game.isColumnFull(i)) {
+                el.classList.remove('full')
+            }
+        }
     }
 }
 

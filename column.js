@@ -16,6 +16,15 @@ class Column {
         return tokens[rowIn]
     }
 
+    isFull() {
+        for (let i=0;i<this.tokens.length;i++) {
+            if (this.tokens[i] === null) {
+                return false
+            }
+        }
+        return true
+    }
+
 
 
 }
