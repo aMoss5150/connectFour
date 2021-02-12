@@ -1,4 +1,5 @@
 import { Column } from './column.js'
+import { ColumnWinInspector } from ('./column-win-inspector.js')
 
 class Game {
     constructor(player1name, player2name) {
@@ -18,6 +19,14 @@ class Game {
         if (this.winnerNumber === 3) {
             return `${this.player1name} ties with ${this.player2name}`
         }
+
+        if (this.winnerNumber === 1) {
+            return `${this.player1name} has won!`
+        }
+
+        if (this.winnerNumber === 2) {
+            return `${this.player2name} has won!`
+        }
         return `${this.player1name} versus ${this.player2name}`
     }
 
@@ -31,6 +40,7 @@ class Game {
             this.currentPlayer = 1;
         }
         this.checkForTie()
+        this.checkForColumnWin()
     }
 
     getTokenAt(rowIndex, columnIndex) {
@@ -39,19 +49,33 @@ class Game {
     }
 
     isColumnFull(columnIndex) {
-        if (columnIndex>=0 && columnIndex<= 6) {
+        if (columnIndex >= 0 && columnIndex <= 6) {
             return this.columns[columnIndex].isFull()
         }
     }
 
     checkForTie() {
-        for (let i=0;i<=6;i++) {
+        for (let i = 0; i <= 6; i++) {
             if (!this.isColumnFull(i)) {
                 return;
             }
         }
         this.winnerNumber = 3
     }
+
+    checkForColumnWin() {
+        if (this.winnerNumber) return
+
+        for (let i = 0; i < this.columns.length; i++) {
+            let newCol = new ColumnWinInspector(this.columns[i])
+            let winner = newCol.inspect()
+            if (winner === 1 || winner === 2) {
+                this.winnerNumber = winner
+                return
+            }
+        }
+    }
+
 }
 
 
