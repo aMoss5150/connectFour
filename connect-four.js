@@ -1,6 +1,12 @@
 import { Game } from './game.js'
 
-
+const clickTargets = document.querySelector('#click-targets')
+console.log('clickTargets:', clickTargets)
+const boardSquares = document.querySelectorAll('.token-square')
+const player1 = document.getElementById('player-1-name')
+const player2 = document.getElementById('player-2-name')
+const players = [player1, player2]
+const newgame = document.getElementById('new-game')
 const boardHolder = document.querySelector('#board-holder')
 let game = undefined
 const gameName = document.querySelector('#game-name')
@@ -59,17 +65,10 @@ const updateUI = function () {
 
 window.addEventListener('DOMContentLoaded', event => {
 
-    const clickTargets = document.querySelector('#click-targets')
-    console.log('clickTargets:', clickTargets)
-    const boardSquares = document.querySelectorAll('.token-square')
-    const player1 = document.getElementById('player-1-name')
-    const player2 = document.getElementById('player-2-name')
-    const players = [player1, player2]
-    const newgame = document.getElementById('new-game')
-
 
 
     clickTargets.addEventListener('click', event => {
+        let column;
         let clickId = event.target.id
         if (clickId.includes("column-")) {
             let column = Number.parseInt(clickId[clickId.length - 1])
@@ -100,10 +99,10 @@ window.addEventListener('DOMContentLoaded', event => {
     })
 
     newgame.addEventListener('click', event => {
-        game = new Game(player1name, player2name)
+        game = new Game(player1.value, player2.value)
 
-        this.player1name = '';
-        this.player2name = '';
+        player1.value = '';
+        player2.value = '';
 
 
         newgame.disabled = true

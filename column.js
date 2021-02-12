@@ -13,7 +13,7 @@ class Column {
     }
 
     getTokenAt(rowIn) {
-        return tokens[rowIn]
+        return this.tokens[rowIn]
     }
 
     isFull() {

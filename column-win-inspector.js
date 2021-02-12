@@ -1,6 +1,7 @@
 class ColumnWinInspector {
     constructor(column) {
-        this.column = column
+        this.column = Object.values(column)
+
     }
 
     inspect() {
@@ -9,7 +10,6 @@ class ColumnWinInspector {
             let second = this.column[i + 1]
             let third = this.column[i + 2]
             let fourth = this.column[i + 3]
-
             if (first === second && second === third && third === fourth) {
                 return first;
             }

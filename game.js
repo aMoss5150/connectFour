@@ -1,5 +1,6 @@
 import { Column } from './column.js'
-import { ColumnWinInspector } from ('./column-win-inspector.js')
+import { ColumnWinInspector } from './column-win-inspector.js'
+import {RowWinInspector} from './row-win-inspector.js'
 
 class Game {
     constructor(player1name, player2name) {
@@ -13,6 +14,7 @@ class Game {
         for (let i = 0; i < 7; i++) {
             this.columns.push(new Column())
         }
+        console.log(this.columns)
     }
 
     getName() {
@@ -41,7 +43,10 @@ class Game {
         }
         this.checkForTie()
         this.checkForColumnWin()
+        this.checkForRowWin()
     }
+
+
 
     getTokenAt(rowIndex, columnIndex) {
         let currentColumn = this.columns[columnIndex]
@@ -49,6 +54,8 @@ class Game {
     }
 
     isColumnFull(columnIndex) {
+        if (this.winnerNumber === 1 || this.winnerNumber === 2) return true;
+
         if (columnIndex >= 0 && columnIndex <= 6) {
             return this.columns[columnIndex].isFull()
         }
@@ -73,6 +80,32 @@ class Game {
                 this.winnerNumber = winner
                 return
             }
+        }
+    }
+
+    checkForRowWin() {
+        if (this.winnerNumber) {
+            return;
+        }
+        let column1 = new RowWinInspector(this.columns.slice(0,4))
+        let column2 = new RowWinInspector(this.columns.slice(1,5))
+        let column3 = new RowWinInspector(this.columns.slice(2,6))
+        let column4 = new RowWinInspector(this.columns.slice(3))
+        if (column1.inspect() > 0) {
+            this.winnerNumber = column1.inspect()
+            return;
+        }
+        if (column2.inspect() > 0) {
+            this.winnerNumber = column2.inspect()
+            return;
+        }
+        if (column3.inspect() > 0) {
+            this.winnerNumber = column3.inspect()
+            return;
+        }
+        if (column4.inspect() > 0) {
+            this.winnerNumber = column4.inspect()
+            return;
         }
     }
 
