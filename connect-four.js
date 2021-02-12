@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', event => {
         let column;
         let clickId = event.target.id
         if (clickId.includes("column-")) {
-            let column = Number.parseInt(clickId[clickId.length - 1])
+            column = Number.parseInt(clickId[clickId.length - 1])
         }
         game.playInColumn(column)
         updateUI()

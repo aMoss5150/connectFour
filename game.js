@@ -14,7 +14,6 @@ class Game {
         for (let i = 0; i < 7; i++) {
             this.columns.push(new Column())
         }
-        console.log(this.columns)
     }
 
     getName() {
@@ -35,7 +34,6 @@ class Game {
     playInColumn(columnIndex) {
         let currentColumn = this.columns[columnIndex] //!! ??????
         currentColumn.add(this.currentPlayer)
-
         if (this.currentPlayer === 1) {
             this.currentPlayer = 2
         } else {
