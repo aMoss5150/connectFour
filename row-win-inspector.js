@@ -4,7 +4,6 @@ class RowWinInspector {
     }
 
 
-
     inspect() {
         for (let i=0 ; i<=5;i++) {
             let first = this.columns[0].getTokenAt(i)

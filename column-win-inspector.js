@@ -5,7 +5,7 @@ class ColumnWinInspector {
     }
 
     inspect() {
-        for (let i = 0; i < this.column.length - 3; i++) {
+        for (let i = 0; i <= 2; i++) {
             let first = this.column.getTokenAt(i)
             let second = this.column.getTokenAt(i + 1)
             let third = this.column.getTokenAt(i + 2)
